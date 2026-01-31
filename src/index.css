@@ -234,11 +234,19 @@ h6 {
 }
 
 
+.nav-menu {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2.5rem;
+}
+
 .nav-links {
   display: flex;
   gap: 2.5rem;
   list-style: none;
 }
+
 
 .nav-links a {
   color: var(--text-muted);
@@ -267,6 +275,13 @@ h6 {
   width: 100%;
   left: 0;
 }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 
 .nav-toggle {
   display: none;

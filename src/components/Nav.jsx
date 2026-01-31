@@ -36,20 +36,21 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <div className="nav-actions">
-          <ThemeToggle />
-        </div>
       </div>
 
-      <button
-        type="button"
-        className="nav-toggle"
-        aria-label="Toggle menu"
-        onClick={toggleMenu}
-      >
-        <span /><span /><span />
-      </button>
+      <div className="nav-right">
+        <ThemeToggle />
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label="Toggle menu"
+          onClick={toggleMenu}
+        >
+          <span /><span /><span />
+        </button>
+      </div>
     </nav>
+
   )
 }
 
