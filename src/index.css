@@ -26,20 +26,21 @@
 
 body.light-theme {
   --bg: #ffffff;
-  --bg-gradient: radial-gradient(circle at 20% 0%, #f1f5f9 0%, #ffffff 40%);
+  --bg-gradient: radial-gradient(circle at 20% 0%, #f7f9fc 0%, #ffffff 40%);
   --bg-card: #ffffff;
   --bg-card-hover: #ffffff;
-  --text: #334155;
-  --text-primary: #0f172a;
+  --text: #475569;
+  --text-primary: #1e293b;
   --text-muted: #64748b;
-  --accent: #0284c7;
-  --accent-secondary: #4f46e5;
+  --accent: #0ea5e9;
+  --accent-secondary: #6366f1;
   --btn-gradient: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-  --border: rgba(15, 23, 42, 0.08);
-  --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(2, 132, 199, 0.05);
-  --accent-dim: rgba(2, 132, 199, 0.05);
+  --border: rgba(14, 165, 233, 0.1);
+  --shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.08);
+  --shadow-hover: 0 20px 50px -10px rgba(14, 165, 233, 0.15), 0 0 25px rgba(14, 165, 233, 0.05);
+  --accent-dim: rgba(14, 165, 233, 0.04);
 }
+
 
 body.light-theme .nav {
   background: rgba(255, 255, 255, 0.85);
@@ -49,12 +50,15 @@ body.light-theme .nav {
 body.light-theme .nav-logo {
   background: linear-gradient(135deg, #0f172a 0%, var(--accent) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
 }
 
 body.light-theme .hero-name {
   background: linear-gradient(180deg, #0f172a 0%, #475569 100%);
   -webkit-background-clip: text;
+  background-clip: text;
 }
+
 
 body.light-theme .skill-card,
 body.light-theme .project-card,
@@ -62,21 +66,48 @@ body.light-theme .service-card,
 body.light-theme .stat-card,
 body.light-theme .contact-form {
   background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  position: relative;
+}
+
+body.light-theme .skill-card::after,
+body.light-theme .project-card::after,
+body.light-theme .service-card::after,
+body.light-theme .stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--btn-gradient);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+body.light-theme .skill-card:hover::after,
+body.light-theme .project-card:hover::after,
+body.light-theme .service-card:hover::after,
+body.light-theme .stat-card:hover::after {
+  opacity: 1;
 }
 
 body.light-theme .skill-card:hover,
 body.light-theme .project-card:hover,
 body.light-theme .service-card:hover,
 body.light-theme .stat-card:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15);
   border-color: var(--accent);
+  transform: translateY(-5px);
 }
 
+
 body.light-theme .hero-bg {
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
 }
+
 
 body.light-theme .contact-form input,
 body.light-theme .contact-form textarea {
@@ -186,9 +217,10 @@ h6 {
   color: var(--text-primary);
   background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 .nav-links {
   display: flex;
@@ -400,9 +432,10 @@ h6 {
   line-height: 1.1;
   background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 .hero-tagline {
   color: var(--text-muted);
