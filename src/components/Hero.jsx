@@ -1,6 +1,6 @@
 const LINKEDIN = 'https://www.linkedin.com/in/faisin-s-muhammed-/'
 const GITHUB = 'https://github.com/faisin111'
-const RESUME_LINK = 'file:///C:/Users/USER/OneDrive/Documents/PERSONAL/Resume/Faisin%20Resume%20(1).pdf'
+const RESUME_LINK = '/resume.pdf'
 
 export default function Hero() {
   return (
