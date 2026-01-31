@@ -1,3 +1,4 @@
+import profile from '../assets/profile.jpg'
 
 export default function About() {
     return (
@@ -35,10 +36,11 @@ export default function About() {
                     </div>
                 </div>
                 <div className="about-image">
-                    <img src="/logo.png" alt="FSM Logo" className="profile-img" />
+                    <img src={profile} alt="Faisin S Muhammed" className="profile-img" />
                 </div>
             </div>
         </section>
     )
 }
+
 
