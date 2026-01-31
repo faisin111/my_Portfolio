@@ -1,5 +1,6 @@
 const LINKEDIN = 'https://www.linkedin.com/in/faisin-s-muhammed-/'
 const GITHUB = 'https://github.com/faisin111'
+const RESUME_LINK = 'file:///C:/Users/USER/OneDrive/Documents/PERSONAL/Resume/Faisin%20Resume%20(1).pdf'
 
 export default function Hero() {
   return (
@@ -13,6 +14,7 @@ export default function Hero() {
         </p>
         <div className="hero-cta">
           <a href="#contact" className="btn btn-primary">Get in Touch</a>
+          <a href={RESUME_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Resume</a>
           <a href="#services" className="btn btn-secondary">View Services</a>
         </div>
         <div className="hero-social">
@@ -23,3 +25,4 @@ export default function Hero() {
     </section>
   )
 }
+
