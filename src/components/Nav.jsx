@@ -11,7 +11,15 @@ const links = [
 ]
 
 export default function Nav() {
-  const [open, setOpen] = useState(false)
+  const toggleMenu = () => {
+    const newState = !open
+    setOpen(newState)
+    if (newState) {
+      document.body.classList.add('menu-open')
+    } else {
+      document.body.classList.remove('menu-open')
+    }
+  }
 
   return (
     <nav className="nav">
@@ -21,7 +29,10 @@ export default function Nav() {
         <ul className="nav-links">
           {links.map(({ href, label }) => (
             <li key={href}>
-              <a href={href} onClick={() => setOpen(false)}>{label}</a>
+              <a href={href} onClick={() => {
+                setOpen(false)
+                document.body.classList.remove('menu-open')
+              }}>{label}</a>
             </li>
           ))}
         </ul>
@@ -34,42 +45,12 @@ export default function Nav() {
         type="button"
         className="nav-toggle"
         aria-label="Toggle menu"
-        onClick={() => setOpen(!open)}
+        onClick={toggleMenu}
       >
         <span /><span /><span />
       </button>
-
-      <style jsx>{`
-        .nav-menu {
-          display: flex;
-          align-items: center;
-          gap: 2.5rem;
-        }
-        .nav-actions {
-          display: flex;
-          align-items: center;
-        }
-        @media (max-width: 768px) {
-          .nav-menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            flex-direction: column;
-            padding: 2rem;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            transform: translateY(-150%);
-            transition: transform 0.3s ease;
-            align-items: center;
-            gap: 1.5rem;
-          }
-          .nav-menu.open {
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </nav>
   )
 }
+
 
