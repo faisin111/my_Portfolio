@@ -20,7 +20,7 @@ export default function LikeButton() {
         setLikes(docSnap.data().likes || 0);
       } else {
         // Initialize if document doesn't exist
-        setDoc(statsRef, { likes: 124 });
+        setDoc(statsRef, { likes: 0 });
       }
     });
 
