@@ -1,30 +1,48 @@
 import React, { useState, useEffect } from 'react';
+import { db } from '../firebase';
+import { doc, updateDoc, increment, onSnapshot, setDoc, getDoc } from "firebase/firestore";
 
 export default function LikeButton() {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const statsRef = doc(db, "portfolio", "stats");
+
   useEffect(() => {
-    // Load likes from localStorage (mocking a global state)
-    const savedLikes = localStorage.getItem('portfolio_likes') || '124';
+    // 1. Check if user has already liked locally
     const hasLiked = localStorage.getItem('has_liked') === 'true';
-    setLikes(parseInt(savedLikes));
     setIsLiked(hasLiked);
+
+    // 2. Listen for real-time updates from Firebase
+    const unsubscribe = onSnapshot(statsRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setLikes(docSnap.data().likes || 0);
+      } else {
+        // Initialize if document doesn't exist
+        setDoc(statsRef, { likes: 124 });
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const handleLike = () => {
+  const handleLike = async () => {
     if (isAnimating) return;
 
     setIsAnimating(true);
     const newLikedState = !isLiked;
     setIsLiked(newLikedState);
     
-    const newLikesCount = newLikedState ? likes + 1 : likes - 1;
-    setLikes(newLikesCount);
-
-    localStorage.setItem('portfolio_likes', newLikesCount.toString());
-    localStorage.setItem('has_liked', newLikedState.toString());
+    // Update Firebase
+    try {
+      await updateDoc(statsRef, {
+        likes: increment(newLikedState ? 1 : -1)
+      });
+      localStorage.setItem('has_liked', newLikedState.toString());
+    } catch (error) {
+      console.error("Error updating likes:", error);
+    }
 
     // Animation timeout
     setTimeout(() => {
