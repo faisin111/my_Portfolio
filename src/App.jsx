@@ -8,10 +8,12 @@ import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import LikeButton from './components/LikeButton'
+import CustomCursor from './components/CustomCursor'
 
 export default function App() {
   return (
     <>
+      <CustomCursor />
       <Nav />
       <main>
         <Hero />

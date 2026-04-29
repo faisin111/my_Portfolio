@@ -1318,4 +1318,55 @@ h6 {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
-}
+}
+
+/* --- Custom Cursor --- */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, .project-card, .skill-card, .like-button {
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+  }
+
+  .cursor-dot.hovering {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+    background-color: transparent;
+  }
+
+  .cursor-ring.hovering {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(56, 189, 248, 0.1);
+    backdrop-filter: blur(2px);
+  }
+}
+
