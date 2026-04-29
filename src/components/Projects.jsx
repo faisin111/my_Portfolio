@@ -1,6 +1,13 @@
 
 const projects = [
     {
+        title: 'Transit Track',
+        category: 'Flutter / .NET 10 / SignalR / Redis',
+        image: '🚌',
+        desc: 'Advanced real-time bus tracking system built with .NET 10 (Clean Architecture + CQRS) and Flutter. Features SignalR live telemetry, Redis state management, and NTS-powered geofencing.',
+        link: 'https://github.com/Live-Bus-Tracking-System/transit_track_flutter'
+    },
+    {
         title: 'Sports Eventer App',
         category: 'Flutter / Firebase / Supabase',
         image: '⚽',

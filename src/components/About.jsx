@@ -27,7 +27,7 @@ export default function About() {
                         </div>
                         <div className="detail-item">
                             <span>Projects</span>
-                            <strong>5+ Real-world</strong>
+                            <strong>6+ Real-world</strong>
                         </div>
                         <div className="detail-item">
                             <span>Looking for</span>

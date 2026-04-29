@@ -1,6 +1,6 @@
 const skills = [
   { icon: '📱', title: 'Flutter & Dart', desc: 'Responsive UI, Custom Widgets, Material & Cupertino, UI Optimization.' },
-  { icon: '🏗️', title: 'State Management', desc: 'Expertise in Riverpod and Provider for scalable app architecture.' },
+  { icon: '🏗️', title: 'State Management', desc: 'Expertise in Riverpod, Provider, and BLoC for scalable app architecture.' },
   { icon: '🔥', title: 'Backend & Cloud', desc: 'Firebase, Supabase, REST APIs, Auth, & Cloud Storage.' },
   { icon: '💾', title: 'Local Storage', desc: 'Hive and Shared Preferences for offline data persistence.' },
   { icon: '🛠️', title: 'Tools', desc: 'Git, GitHub, VS Code, Android Studio, Postman.' },
