@@ -1196,20 +1196,6 @@ h6 {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* --- Project Card Enhancement --- */
-.projects-grid {
-  perspective: 1000px;
-}
-
-.project-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.project-info {
-  transform: translateZ(20px); /* Makes content feel like it's floating */
-}
-
 
 /* --- Like Button --- */
 .like-button-container {
