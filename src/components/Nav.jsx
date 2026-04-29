@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ThemeToggle from './ThemeToggle'
 
 const links = [
@@ -11,6 +11,21 @@ const links = [
 ]
 
 export default function Nav() {
+  const [open, setOpen] = useState(false)
+
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      const scrolled = (window.scrollY / scrollHeight) * 100
+      setScrollProgress(scrolled)
+    }
+
+    window.addEventListener('scroll', updateScrollProgress)
+    return () => window.removeEventListener('scroll', updateScrollProgress)
+  }, [])
+
   const toggleMenu = () => {
     const newState = !open
     setOpen(newState)
@@ -23,6 +38,10 @@ export default function Nav() {
 
   return (
     <nav className="nav">
+      <div 
+        className="scroll-progress-bar" 
+        style={{ width: `${scrollProgress}%` }}
+      />
       <a href="#hero" className="nav-logo">FSM</a>
 
       <div className={`nav-menu ${open ? 'open' : ''}`}>

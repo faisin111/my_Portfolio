@@ -1,3 +1,4 @@
+import React, { useRef } from 'react'
 
 const projects = [
     {
@@ -44,6 +45,51 @@ const projects = [
     }
 ]
 
+function ProjectCard({ project }) {
+    const cardRef = useRef(null);
+
+    const handleMouseMove = (e) => {
+        if (!cardRef.current) return;
+        const card = cardRef.current;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    };
+
+    const handleMouseLeave = () => {
+        if (!cardRef.current) return;
+        cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    };
+
+    return (
+        <div 
+            ref={cardRef}
+            className="project-card"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ transition: 'transform 0.1s ease-out' }}
+        >
+            <div className="project-image">
+                <span>{project.image}</span>
+            </div>
+            <div className="project-info">
+                <span className="project-category">{project.category}</span>
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">View on GitHub &rarr;</a>
+            </div>
+        </div>
+    );
+}
+
 export default function Projects() {
     return (
         <section id="projects" className="section projects">
@@ -51,17 +97,7 @@ export default function Projects() {
             <p className="section-subtitle">A selection of my recent work</p>
             <div className="projects-grid">
                 {projects.map((project, index) => (
-                    <div key={index} className="project-card">
-                        <div className="project-image">
-                            <span>{project.image}</span>
-                        </div>
-                        <div className="project-info">
-                            <span className="project-category">{project.category}</span>
-                            <h3>{project.title}</h3>
-                            <p>{project.desc}</p>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">View on GitHub &rarr;</a>
-                        </div>
-                    </div>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
         </section>

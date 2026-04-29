@@ -1184,12 +1184,32 @@ h6 {
   }
 }
 
-@keyframes bounceIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* --- Scroll Progress Bar --- */
+.scroll-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--btn-gradient);
+  z-index: 1001;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--accent-glow);
 }
+
+/* --- Project Card Enhancement --- */
+.projects-grid {
+  perspective: 1000px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-info {
+  transform: translateZ(20px); /* Makes content feel like it's floating */
+}
+
 
 /* --- Like Button --- */
 .like-button-container {
