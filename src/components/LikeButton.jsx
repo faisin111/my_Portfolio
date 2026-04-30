@@ -17,10 +17,10 @@ export default function LikeButton() {
     // 2. Listen for real-time updates from Firebase
     const unsubscribe = onSnapshot(statsRef, (docSnap) => {
       if (docSnap.exists()) {
-        setLikes(docSnap.data().likes || 0);
+        const count = docSnap.data().likes || 0;
+        setLikes(count < 0 ? 0 : count);
       } else {
-        // Initialize if document doesn't exist
-        setDoc(statsRef, { likes: 0 });
+        setLikes(0);
       }
     });
 
@@ -36,9 +36,15 @@ export default function LikeButton() {
     
     // Update Firebase
     try {
-      await updateDoc(statsRef, {
+      if (!newLikedState && likes <= 0) {
+        localStorage.setItem('has_liked', 'false');
+        setTimeout(() => setIsAnimating(false), 1000);
+        return;
+      }
+
+      await setDoc(statsRef, {
         likes: increment(newLikedState ? 1 : -1)
-      });
+      }, { merge: true });
       localStorage.setItem('has_liked', newLikedState.toString());
     } catch (error) {
       console.error("Error updating likes:", error);
